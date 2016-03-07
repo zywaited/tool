@@ -23,11 +23,6 @@ class Sock{
             foreach($changes as $sock){
                 if($sock==$this->master){
                     $client=socket_accept($this->master);
-                    // //$key=uniqid();
-                    // if($client<0){
-                    //     echo "socket_accept() failed";
-                    //     continue;
-                    // }
                     $this->sockets[]=$client;
                     $this->users[]=array(
                         'socket'=>$client,
@@ -147,7 +142,6 @@ class Sock{
     }
      
     function send($k,$msg){
-        /*$this->send1($k,$this->code($msg),'all');*/
         parse_str($msg,$g);
         $this->e($msg);
         $ar=array();
@@ -165,7 +159,6 @@ class Sock{
         $this->e($msg);
         $msg = $this->code($msg);
         $this->send1($k,$msg,$key);
-        //socket_write($this->users[$k]['socket'],$msg,strlen($msg));
     }
      
     function getusers(){
